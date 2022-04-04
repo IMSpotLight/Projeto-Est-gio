@@ -1,6 +1,7 @@
 import React from "react";
-import { InnerContainer, PageTitle, StyledFormArea, StyledButton, ButtonText, Line, HomeContainer, Avatar, LeftIcon, Colors } from "../components/style";
+import { InnerContainer, PageTitle, StyledFormArea, StyledButton, ButtonText, Line, HomeContainer, Avatar, LeftIcon, Colors } from "../styles/global";
 import { StatusBar } from "expo-status-bar";
+
 
 
 const Home = ({navigation}) => {
@@ -10,15 +11,9 @@ const Home = ({navigation}) => {
             <StatusBar style="dark" />
             <InnerContainer>
                 <HomeContainer>
-                    <PageTitle home={true}>Registo de Exercicios</PageTitle>
+                    <PageTitle home={true}>Exercice Registration System</PageTitle>
                     <StyledFormArea>
                     <Avatar resizeMode="cover" source={ require('../img/running-icon-27.png') } />
-                        <StyledButton onPress={() => navigation.navigate('Pulsaçao')}>
-                            <ButtonText>
-                                Pulsaçao
-                            </ButtonText>
-                        </StyledButton>
-                    <Line />
                         <StyledButton onPress={() => navigation.navigate('Mapa')}>
                             <ButtonText>
                                 Mapa
@@ -29,8 +24,7 @@ const Home = ({navigation}) => {
                             <ButtonText>
                                 Exercicio
                             </ButtonText>
-                        </StyledButton>
-
+                        </StyledButton>                 
                     </StyledFormArea>
                 </HomeContainer>
             </InnerContainer>
