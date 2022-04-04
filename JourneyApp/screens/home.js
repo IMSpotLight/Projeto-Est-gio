@@ -13,7 +13,7 @@ const Home = ({navigation}) => {
                 <HomeContainer>
                     <PageTitle home={true}>Exercice Registration System</PageTitle>
                     <StyledFormArea>
-                    <Avatar resizeMode="cover" source={ require('../img/running-icon-27.png') } />
+                    <Avatar resizeMode="center" source={ require('../img/running-icon-27.png') } />
                         <StyledButton onPress={() => navigation.navigate('Mapa')}>
                             <ButtonText>
                                 Mapa

@@ -6,7 +6,7 @@ const StatusBarHeight = Constants.statusBarHeight;
 
 export const Colors = {
     primary: "#ffffff",
-    secondary: "#E5E7EB",
+    secondary: "transparent",
     tertiary: "#1F2937",
     darkLight: "#9CA3AF",
     brand: "#6D28D9",
@@ -37,21 +37,21 @@ export const HomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-    width: 400px;
-    height: 300px;
-    border-radius: 50px;
+    width: 300px;
+    height: 200px;
+    border-radius: 40px;
     margin-bottom: 30px;
 `;
 
 export const Avatar = styled.Image`
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     margin: auto;
-    border-radius: 50px;
+    border-radius: 70px;
     border-width: 2px;
     border-color: ${secondary};
     margin-bottom: 50px;
-    margin-top: 10px;
+    margin-top: 20px;
 `;
 
 export const PageTitle = styled.Text`
@@ -61,7 +61,7 @@ export const PageTitle = styled.Text`
     color: ${brand};
     padding: 10px;
     ${(props) => props.home && `
-        font-size: 35px;
+        font-size: 30px;
     `}
 `;
 

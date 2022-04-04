@@ -8,7 +8,7 @@ export default function Mapa() {
         <View style={StyleSheet.container}>
             <Text>Mapa</Text>
             <MapView 
-                style={{height: '50%', width: '100%'}}
+                style={{height: '150%', width: '150%'}}
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation={true}
             />

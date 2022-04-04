@@ -1,38 +1,64 @@
-import React from 'react';
-import { Text, TextInput, View, SafeAreaView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import AddExercicio from '../components/addExercicio';
+import ExercicioItem from '../components/exercicioItem';
 
-const ComentariosInput = () => {
-    const [text, onChangeText] = React.useState("Comentarios");
-    const [number, onChangeNumber] = React.useState(null);
 
-    return (
-        <SafeAreaView>
-            <TextInput 
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
+
+export default function App() {
+  const [todos, setTodos] = useState([
+  ]);
+
+  const pressHandler = (key) => {
+    setTodos(prevTodos => {
+      return prevTodos.filter(todo => todo.key != key);
+    });
+  };
+
+  const submitHandler = (text) => {
+    if(text.length > 3){
+      setText('');
+      setTodos(prevTodos => {
+        return [
+          { text, key: Math.random().toString() },
+          ...prevTodos
+        ];
+      });
+    } else {
+      Alert.alert('UPS', 'A nota deve ter mais de 3 caracteres', [
+        {text: 'OK', onPress: () => console.log('alert closed') }
+      ]);
+    }
+  };
+
+  return (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <AddExercicio submitHandler={submitHandler} />
+          <View style={styles.list}>
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <ExercicioItem item={item} pressHandler={pressHandler} />
+              )}
             />
-            <TextInput 
-                style={styles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                label="Exercicio"              
-                placeholder="Escreva Aqui"
-                activeUnderlineColor="yellow"
-                underlineColor="purple"
-                keyboardType="default"
-            />
-        </SafeAreaView>
-    );
-};
+          </View>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
+}
 
 const styles = StyleSheet.create({
-    input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-    },
-  });
-  
-  export default ComentariosInput;
+  container: {
+    flex: 1,
+    backgroundColor: '#f1f2f4',
+  },
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20,
+  },
+});
