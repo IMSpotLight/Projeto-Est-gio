@@ -1,27 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-
-export default function Mapa() {
-    return (
-        <View style={StyleSheet.container}>
-            <Text>Mapa</Text>
-            <MapView 
-                style={{height: '150%', width: '150%'}}
-                provider={PROVIDER_GOOGLE}
-                showsUserLocation={true}
-            />
-            <StatusBar style='auto' />
-        </View>
-    );
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
+export default function App() {
+  return (
+    <View style={styles.container}>
+    {/*Render our MapView*/}
+      <MapView
+        style={styles.map}
+        //specify our coordinates.
+        initialRegion={{
+          latitude: 41.530918,
+          longitude:  -8.780565,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
+    </View>
+  );
 }
-
+//create our styling code:
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1, //the container will fill the whole screen.
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 });
